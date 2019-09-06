@@ -113,7 +113,7 @@ export default {
 
   methods: {
     onChange1(index) {
-      this.$toast(this.$t('message') + index);
+      this.$Toast(this.$t('message') + index);
     },
 
     onChange2(index) {

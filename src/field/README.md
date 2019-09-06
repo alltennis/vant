@@ -34,7 +34,7 @@ Use `type` prop to custom different type fields.
     label="Username"
     right-icon="question-o"
     placeholder="Username"
-    @click-right-icon="$toast('question')"
+    @click-right-icon="$Toast('question')"
   />
 
   <van-field

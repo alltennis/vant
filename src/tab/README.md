@@ -81,7 +81,7 @@ You can set `disabled` attribute on the corresponding `van-tab`.
 export default {
   methods: {
     onClickDisabled(name, title) {
-      this.$toast(title + ' is disabled');
+      this.$Toast(title + ' is disabled');
     }
   }
 };
@@ -113,7 +113,7 @@ Tabs styled as cards.
 export default {
   methods: {
     onClick(name, title) {
-      this.$toast(title);
+      this.$Toast(title);
     }
   }
 };

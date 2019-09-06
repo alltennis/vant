@@ -184,11 +184,11 @@ export default {
 
   methods: {
     onClickDisabled(index, title) {
-      this.$toast(title + this.$t('disabled'));
+      this.$Toast(title + this.$t('disabled'));
     },
 
     onClick(index, title) {
-      this.$toast(title);
+      this.$Toast(title);
     }
   }
 };

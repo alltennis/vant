@@ -38,7 +38,7 @@ Vue.use(Field);
     label="用户名"
     right-icon="question-o"
     placeholder="请输入用户名"
-    @click-right-icon="$toast('question')"
+    @click-right-icon="$Toast('question')"
   />
 
   <van-field

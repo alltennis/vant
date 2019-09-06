@@ -84,7 +84,7 @@ export default {
 export default {
   methods: {
     onClickDisabled(name, title) {
-      this.$toast(name + '已被禁用');
+      this.$Toast(name + '已被禁用');
     }
   }
 };
@@ -117,7 +117,7 @@ export default {
 export default {
   methods: {
     onClick(name, title) {
-      this.$toast(title);
+      this.$Toast(title);
     }
   }
 };

@@ -96,6 +96,6 @@ Dialog.install = () => {
 
 Dialog.Component = VanDialog;
 
-Vue.prototype.$dialog = Dialog;
+Vue.prototype.$Dialog = Dialog;
 
 export default Dialog;

@@ -33,7 +33,7 @@ export interface Dialog {
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $dialog: Dialog;
+    $Dialog: Dialog;
   }
 }
 

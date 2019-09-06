@@ -105,11 +105,11 @@ export default {
 
   methods: {
     onChange(value) {
-      this.$toast.loading({ forbidClick: true });
+      this.$Toast.loading({ forbidClick: true });
 
       setTimeout(() => {
         this.stepper6 = value;
-        this.$toast.clear();
+        this.$Toast.clear();
       }, 500);
     }
   }

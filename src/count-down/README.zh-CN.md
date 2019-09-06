@@ -111,7 +111,7 @@ export default {
       this.$refs.countDown.reset();
     },
     finish() {
-      this.$toast('倒计时结束');
+      this.$Toast('倒计时结束');
     }
   }
 }

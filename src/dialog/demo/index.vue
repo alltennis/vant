@@ -82,20 +82,20 @@ export default {
 
   methods: {
     onClickAlert() {
-      this.$dialog.alert({
+      this.$Dialog.alert({
         title: this.$t('title'),
         message: this.$t('content')
       });
     },
 
     onClickAlert2() {
-      this.$dialog.alert({
+      this.$Dialog.alert({
         message: this.$t('content')
       });
     },
 
     onClickConfirm() {
-      this.$dialog.confirm({
+      this.$Dialog.confirm({
         title: this.$t('title'),
         message: this.$t('content')
       });
@@ -110,7 +110,7 @@ export default {
         }
       }
 
-      this.$dialog.confirm({
+      this.$Dialog.confirm({
         title: this.$t('title'),
         message: this.$t('content'),
         beforeClose

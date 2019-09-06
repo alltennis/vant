@@ -61,10 +61,10 @@ export default {
 
   methods: {
     onSearch() {
-      this.$toast(this.value);
+      this.$Toast(this.value);
     },
     onCancel() {
-      this.$toast(this.$t('cancel'));
+      this.$Toast(this.$t('cancel'));
     }
   }
 };

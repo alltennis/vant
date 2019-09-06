@@ -90,7 +90,7 @@ export default {
           instance.close();
           break;
         case 'right':
-          this.$dialog.confirm({
+          this.$Dialog.confirm({
             message: this.$t('confirm')
           }).then(() => {
             instance.close();

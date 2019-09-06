@@ -42,7 +42,7 @@ export interface Toast {
 
 declare module 'vue/types/vue' {
   interface Vue {
-    $toast: Toast;
+    $Toast: Toast;
   }
 }
 

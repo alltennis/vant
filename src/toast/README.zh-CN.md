@@ -71,12 +71,12 @@ const timer = setInterval(() => {
 
 ### 组件内调用
 
-引入 Toast 组件后，会自动在 Vue 的 prototype 上挂载 $toast 方法，便于在组件内调用。
+引入 Toast 组件后，会自动在 Vue 的 prototype 上挂载 $Toast 方法，便于在组件内调用。
 
 ```js
 export default {
   mounted() {
-    this.$toast('提示文案');
+    this.$Toast('提示文案');
   }
 }
 ```

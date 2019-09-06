@@ -63,14 +63,14 @@ Dialog.confirm({
 });
 ```
 
-### $dialog Method
+### $Dialog Method
 
-After import the Dialog component, the $dialog method is automatically mounted on Vue.prototype, making it easy to call within a vue component.
+After import the Dialog component, the $Dialog method is automatically mounted on Vue.prototype, making it easy to call within a vue component.
 
 ```js
 export default {
   mounted() {
-    this.$dialog.alert({
+    this.$Dialog.alert({
       message: 'Content'
     });
   }

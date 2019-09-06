@@ -59,10 +59,10 @@ export default {
   },
   methods: {
     onClickIcon() {
-      this.$toast(this.$t('clickIcon'));
+      this.$Toast(this.$t('clickIcon'));
     },
     onClickButton() {
-      this.$toast(this.$t('clickButton'));
+      this.$Toast(this.$t('clickButton'));
     }
   }
 };

@@ -93,11 +93,11 @@ export default {
 
   methods: {
     onInput(value) {
-      this.$toast(`${this.$t('input')}: ${value}`);
+      this.$Toast(`${this.$t('input')}: ${value}`);
     },
 
     onDelete() {
-      this.$toast(this.$t('delete'));
+      this.$Toast(this.$t('delete'));
     }
   }
 };

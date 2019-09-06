@@ -138,7 +138,7 @@ export default {
 
   methods: {
     onChange1(picker, value, index) {
-      this.$toast(this.$t('toastContent', value, index));
+      this.$Toast(this.$t('toastContent', value, index));
     },
 
     onChange2(picker, values) {
@@ -146,11 +146,11 @@ export default {
     },
 
     onConfirm(value, index) {
-      this.$toast(this.$t('toastContent', value, index));
+      this.$Toast(this.$t('toastContent', value, index));
     },
 
     onCancel() {
-      this.$toast(this.$t('cancel'));
+      this.$Toast(this.$t('cancel'));
     },
 
     onClickField() {

@@ -38,7 +38,7 @@
         :time="3000"
         :auto-start="false"
         format="ss:SSS"
-        @finish="$toast($t('finished'))"
+        @finish="$Toast($t('finished'))"
       />
       <van-grid
         clickable

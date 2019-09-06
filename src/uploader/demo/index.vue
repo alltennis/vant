@@ -72,7 +72,7 @@ export default {
   methods: {
     beforeRead(file) {
       if (file.type !== 'image/jpeg') {
-        this.$toast(this.$t('invalidType'));
+        this.$Toast(this.$t('invalidType'));
         return false;
       }
 

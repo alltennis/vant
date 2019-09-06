@@ -34,7 +34,7 @@ export default {
   methods: {
     onRefresh() {
       setTimeout(() => {
-        this.$toast(this.$t('success'));
+        this.$Toast(this.$t('success'));
         this.isLoading = false;
         this.count++;
       }, 500);
