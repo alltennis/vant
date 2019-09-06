@@ -101,15 +101,16 @@ export default createComponent({
 
       let { value } = target;
       const { maxlength } = this.$attrs;
+      let vMaxlength = maxlength;
 
-      if (this.type === 'number' && (isDef(maxlength) || (maxlength>9))){
-        maxlength = 9
+      if (this.type === 'number' && (isDef(vMaxlength) || (vMaxlength > 9))) {
+        vMaxlength = 9;
       }
-      if( isDef(maxlength) && value.length > maxlength) {
-        value = value.slice(0, maxlength);
+      if (isDef(vMaxlength) && value.length > vMaxlength) {
+        value = value.slice(0, vMaxlength);
       }
-      if (this.type === 'number' ){
-        value = parseInt(value,0)
+      if (this.type === 'number') {
+        value = parseInt(value, 0);
       }
 
       target.value = value;
@@ -163,11 +164,13 @@ export default createComponent({
     onKeypress(event) {
       if (this.type === 'number') {
         const { keyCode } = event;
-        const allowPoint = String(this.value).indexOf('.') === -1;
+        // const allowPoint = String(this.value).indexOf('.') === -1;
         const isValidKey =
-          (keyCode >= 48 && keyCode <= 57); /*||
+          (keyCode >= 48 && keyCode <= 57);
+          /* ||
           (keyCode === 46 && allowPoint) ||
-          keyCode === 45*/
+          keyCode === 45
+          */
 
         if (!isValidKey) {
           preventDefault(event);
