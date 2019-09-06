@@ -102,11 +102,17 @@ export default createComponent({
       let { value } = target;
       const { maxlength } = this.$attrs;
 
-      if (this.type === 'number' && isDef(maxlength) && value.length > maxlength) {
+      if (this.type === 'number' && (isDef(maxlength) || (maxlength>9))){
+        maxlength = 9
+      }
+      if( isDef(maxlength) && value.length > maxlength) {
         value = value.slice(0, maxlength);
-        target.value = value;
+      }
+      if (this.type === 'number' ){
+        value = parseInt(value,0)
       }
 
+      target.value = value;
       return value;
     },
 
@@ -159,9 +165,9 @@ export default createComponent({
         const { keyCode } = event;
         const allowPoint = String(this.value).indexOf('.') === -1;
         const isValidKey =
-          (keyCode >= 48 && keyCode <= 57) ||
+          (keyCode >= 48 && keyCode <= 57); /*||
           (keyCode === 46 && allowPoint) ||
-          keyCode === 45;
+          keyCode === 45*/
 
         if (!isValidKey) {
           preventDefault(event);
