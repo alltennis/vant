@@ -34,12 +34,10 @@
   },
   "lint-staged": {
     "*.{ts,tsx,js,vue}": [
-      "eslint",
-      "git add"
+      "eslint"
     ],
     "*.{vue,css}": [
-      "stylelint",
-      "git add"
+      "stylelint"
     ]
   },
   "repository": {
