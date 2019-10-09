@@ -11,6 +11,7 @@ var _createNamespace = createNamespace('sidebar-item'),
 export default createComponent({
   mixins: [ChildrenMixin('vanSidebar')],
   props: _extends({}, routeProps, {
+    dot: Boolean,
     info: [Number, String],
     title: String,
     disabled: Boolean
@@ -46,6 +47,7 @@ export default createComponent({
       "class": bem('text')
     }, [this.title, h(Info, {
       "attrs": {
+        "dot": this.dot,
         "info": this.info
       },
       "class": bem('info')

@@ -15,7 +15,11 @@ export function getTrueValue(value) {
   }
 
   while (isNaN(parseInt(value, 10))) {
-    value = value.slice(1);
+    if (value.length > 1) {
+      value = value.slice(1);
+    } else {
+      return;
+    }
   }
 
   return parseInt(value, 10);

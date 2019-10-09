@@ -25,7 +25,6 @@ export default createComponent({
     title: String,
     closeButtonText: String,
     deleteButtonText: String,
-    safeAreaInsetBottom: Boolean,
     theme: {
       type: String,
       default: 'default'
@@ -57,6 +56,10 @@ export default createComponent({
     hideOnClickOutside: {
       type: Boolean,
       default: true
+    },
+    safeAreaInsetBottom: {
+      type: Boolean,
+      default: true
     }
   },
   watch: {
@@ -80,7 +83,8 @@ export default createComponent({
         case 'default':
           keys.push({
             text: this.extraKey,
-            theme: ['gray']
+            theme: ['gray'],
+            type: 'extra'
           }, {
             text: 0
           }, {
@@ -95,7 +99,8 @@ export default createComponent({
             text: 0,
             theme: ['middle']
           }, {
-            text: this.extraKey
+            text: this.extraKey,
+            type: 'extra'
           });
           break;
       }
@@ -171,7 +176,7 @@ export default createComponent({
         "on": {
           "press": onPress
         }
-      }, [key.type === 'delete' && _this.slots('delete')]);
+      }, [key.type === 'delete' && _this.slots('delete'), key.type === 'extra' && _this.slots('extra-key')]);
     });
     var Sidebar = theme === 'custom' && h("div", {
       "class": bem('sidebar')

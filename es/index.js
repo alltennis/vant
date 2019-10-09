@@ -81,7 +81,7 @@ import Tag from './tag';
 import Toast from './toast';
 import TreeSelect from './tree-select';
 import Uploader from './uploader';
-var version = '2.2.0';
+var version = '2.2.6';
 var components = [ActionSheet, AddressEdit, AddressList, Area, Button, Card, Cell, CellGroup, Checkbox, CheckboxGroup, Circle, Col, Collapse, CollapseItem, ContactCard, ContactEdit, ContactList, CountDown, Coupon, CouponCell, CouponList, DatetimePicker, Dialog, Divider, DropdownItem, DropdownMenu, Field, GoodsAction, GoodsActionButton, GoodsActionIcon, Grid, GridItem, Icon, Image, ImagePreview, IndexAnchor, IndexBar, Info, List, Loading, NavBar, NoticeBar, Notify, NumberKeyboard, Overlay, Pagination, Panel, PasswordInput, Picker, Popup, Progress, PullRefresh, Radio, RadioGroup, Rate, Row, Search, Sidebar, SidebarItem, Skeleton, Sku, Slider, Step, Stepper, Steps, Sticky, SubmitBar, Swipe, SwipeCell, SwipeItem, Switch, SwitchCell, Tab, Tabbar, TabbarItem, Tabs, Tag, Toast, TreeSelect, Uploader];
 
 var install = function install(Vue) {

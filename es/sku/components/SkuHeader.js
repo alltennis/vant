@@ -1,8 +1,7 @@
 import _mergeJSXProps from "@vue/babel-helper-vue-jsx-merge-props";
 import { createNamespace } from '../../utils';
 import { inherit } from '../../utils/functional';
-import { BORDER_BOTTOM } from '../../utils/constant';
-import Icon from '../../icon'; // Types
+import { BORDER_BOTTOM } from '../../utils/constant'; // Types
 
 var _createNamespace = createNamespace('sku-header'),
     createComponent = _createNamespace[0],
@@ -17,7 +16,7 @@ function getSkuImg(sku, selectedSku) {
       var matchedSku = item.v.filter(function (skuValue) {
         return skuValue.id === id;
       })[0] || {};
-      img = matchedSku.imgUrl || matchedSku.img_url;
+      img = matchedSku.previewImgUrl || matchedSku.imgUrl || matchedSku.img_url;
       return img;
     }
 
@@ -50,17 +49,7 @@ function SkuHeader(h, props, slots, ctx) {
     }
   })]), h("div", {
     "class": bem('goods-info')
-  }, [slots.default && slots.default(), h(Icon, {
-    "attrs": {
-      "name": "clear"
-    },
-    "class": "van-sku__close-icon",
-    "on": {
-      "click": function click() {
-        skuEventBus.$emit('sku:close');
-      }
-    }
-  })])]);
+  }, [slots.default && slots.default()])]);
 }
 
 SkuHeader.props = {

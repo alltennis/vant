@@ -2,6 +2,7 @@ import { createNamespace } from '../utils';
 import Cell from '../cell';
 import Icon from '../icon';
 import Popup from '../popup';
+import { PortalMixin } from '../mixins/portal';
 import { ChildrenMixin } from '../mixins/relation';
 
 var _createNamespace = createNamespace('dropdown-item'),
@@ -9,7 +10,9 @@ var _createNamespace = createNamespace('dropdown-item'),
     bem = _createNamespace[1];
 
 export default createComponent({
-  mixins: [ChildrenMixin('vanDropdownMenu')],
+  mixins: [PortalMixin({
+    ref: 'wrapper'
+  }), ChildrenMixin('vanDropdownMenu')],
   props: {
     value: null,
     title: String,
@@ -135,11 +138,12 @@ export default createComponent({
       style.bottom = offset + "px";
     }
 
-    return h("div", {
+    return h("div", [h("div", {
       "directives": [{
         name: "show",
         value: this.showWrapper
       }],
+      "ref": "wrapper",
       "style": style,
       "class": bem([direction])
     }, [h(Popup, {
@@ -169,6 +173,6 @@ export default createComponent({
           _this3.showPopup = $$v;
         }
       }
-    }, [Options, this.slots('default')])]);
+    }, [Options, this.slots('default')])])]);
   }
 });

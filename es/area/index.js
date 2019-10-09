@@ -7,6 +7,8 @@ var _createNamespace = createNamespace('area'),
     createComponent = _createNamespace[0],
     bem = _createNamespace[1];
 
+var COLUMNSPLACEHOLDERCODE = '000000';
+
 function isOverseaCode(code) {
   return code[0] === '9';
 }
@@ -27,6 +29,12 @@ export default createComponent({
     isOverseaCode: {
       type: Function,
       default: isOverseaCode
+    },
+    columnsPlaceholder: {
+      type: Array,
+      default: function _default() {
+        return [];
+      }
     }
   }),
   data: function data() {
@@ -53,6 +61,13 @@ export default createComponent({
     },
     displayColumns: function displayColumns() {
       return this.columns.slice(0, +this.columnsNum);
+    },
+    typeToColumnsPlaceholder: function typeToColumnsPlaceholder() {
+      return {
+        province: this.columnsPlaceholder[0] || '',
+        city: this.columnsPlaceholder[1] || '',
+        county: this.columnsPlaceholder[2] || ''
+      };
     }
   },
   watch: {
@@ -103,6 +118,15 @@ export default createComponent({
         });
       }
 
+      if (this.typeToColumnsPlaceholder[type] && result.length) {
+        // set columns placeholder
+        var codeFill = type === 'province' ? '' : type === 'city' ? COLUMNSPLACEHOLDERCODE.slice(2, 4) : COLUMNSPLACEHOLDERCODE.slice(4, 6);
+        result.unshift({
+          code: "" + code + codeFill,
+          name: this.typeToColumnsPlaceholder[type]
+        });
+      }
+
       return result;
     },
     // get index by code
@@ -124,13 +148,50 @@ export default createComponent({
 
       return 0;
     },
+    // parse output columns data
+    parseOutputValues: function parseOutputValues(values) {
+      var _this2 = this;
+
+      return values.map(function (value, index) {
+        if (value === void 0) {
+          value = {};
+        }
+
+        value = JSON.parse(JSON.stringify(value));
+
+        if (!value.code || value.name === _this2.columnsPlaceholder[index]) {
+          value.code = '';
+          value.name = '';
+        }
+
+        return value;
+      });
+    },
     onChange: function onChange(picker, values, index) {
       this.code = values[index].code;
       this.setValues();
-      this.$emit('change', picker, picker.getValues(), index);
+      var getValues = picker.getValues();
+      getValues = this.parseOutputValues(getValues);
+      this.$emit('change', picker, getValues, index);
+    },
+    onConfirm: function onConfirm(values, index) {
+      values = this.parseOutputValues(values);
+      this.setValues();
+      this.$emit('confirm', values, index);
     },
     setValues: function setValues() {
-      var code = this.code || Object.keys(this.county)[0] || '';
+      var code = this.code;
+
+      if (!code) {
+        if (this.columnsPlaceholder.length) {
+          code = COLUMNSPLACEHOLDERCODE;
+        } else if (Object.keys(this.county)[0]) {
+          code = Object.keys(this.county)[0];
+        } else {
+          code = '';
+        }
+      }
+
       var picker = this.$refs.picker;
       var province = this.getList('province');
       var city = this.getList('city', code.slice(0, 2));
@@ -193,7 +254,8 @@ export default createComponent({
     var h = arguments[0];
 
     var on = _extends({}, this.$listeners, {
-      change: this.onChange
+      change: this.onChange,
+      confirm: this.onConfirm
     });
 
     return h(Picker, {

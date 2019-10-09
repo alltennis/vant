@@ -247,8 +247,16 @@ export default createComponent({
       this.resetTouchStatus();
       this.correctPosition();
       doubleRaf(function () {
+        var targetIndex;
+
+        if (_this.loop && index === _this.count) {
+          targetIndex = _this.active === 0 ? 0 : index;
+        } else {
+          targetIndex = index % _this.count;
+        }
+
         _this.move({
-          pace: index % _this.count - _this.active,
+          pace: targetIndex - _this.active,
           emitChange: true
         });
 

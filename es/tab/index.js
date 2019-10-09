@@ -1,5 +1,7 @@
+import _extends from "@babel/runtime/helpers/esm/extends";
 import { createNamespace } from '../utils';
 import { ChildrenMixin } from '../mixins/relation';
+import { routeProps } from '../utils/router';
 
 var _createNamespace = createNamespace('tab'),
     createComponent = _createNamespace[0],
@@ -7,11 +9,11 @@ var _createNamespace = createNamespace('tab'),
 
 export default createComponent({
   mixins: [ChildrenMixin('vanTabs')],
-  props: {
+  props: _extends({}, routeProps, {
     name: [Number, String],
     title: String,
     disabled: Boolean
-  },
+  }),
   data: function data() {
     return {
       inited: false

@@ -216,10 +216,15 @@ export default createComponent({
       return this.options.map(function (option, index) {
         var text = _this2.getOptionText(option);
 
+        var disabled = isOptionDisabled(option);
         var data = {
           style: optionStyle,
+          attrs: {
+            role: 'button',
+            tabindex: disabled ? -1 : 0
+          },
           class: ['van-ellipsis', bem('item', {
-            disabled: isOptionDisabled(option),
+            disabled: disabled,
             selected: index === _this2.currentIndex
           })],
           on: {

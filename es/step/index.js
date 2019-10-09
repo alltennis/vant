@@ -1,5 +1,6 @@
 import { createNamespace } from '../utils';
 import { BORDER } from '../utils/constant';
+import { ChildrenMixin } from '../mixins/relation';
 import Icon from '../icon';
 
 var _createNamespace = createNamespace('step'),
@@ -7,50 +8,28 @@ var _createNamespace = createNamespace('step'),
     bem = _createNamespace[1];
 
 export default createComponent({
-  beforeCreate: function beforeCreate() {
-    var steps = this.$parent.steps;
-    var index = this.$parent.slots().indexOf(this.$vnode);
-    steps.splice(index === -1 ? steps.length : index, 0, this);
-  },
-  beforeDestroy: function beforeDestroy() {
-    var index = this.$parent.steps.indexOf(this);
-
-    if (index > -1) {
-      this.$parent.steps.splice(index, 1);
-    }
-  },
+  mixins: [ChildrenMixin('vanSteps')],
   computed: {
     status: function status() {
-      var index = this.$parent.steps.indexOf(this);
-      var active = this.$parent.active;
-
-      if (index < active) {
+      if (this.index < this.parent.active) {
         return 'finish';
       }
 
-      if (index === active) {
+      if (this.index === this.parent.active) {
         return 'process';
       }
     }
   },
-  render: function render() {
-    var _ref;
+  methods: {
+    genCircle: function genCircle() {
+      var h = this.$createElement;
+      var _this$parent = this.parent,
+          activeIcon = _this$parent.activeIcon,
+          activeColor = _this$parent.activeColor,
+          inactiveIcon = _this$parent.inactiveIcon;
 
-    var h = arguments[0];
-    var slots = this.slots,
-        status = this.status;
-    var _this$$parent = this.$parent,
-        activeIcon = _this$$parent.activeIcon,
-        activeColor = _this$$parent.activeColor,
-        inactiveIcon = _this$$parent.inactiveIcon,
-        direction = _this$$parent.direction;
-    var titleStyle = status === 'process' && {
-      color: activeColor
-    };
-
-    function Circle() {
-      if (status === 'process') {
-        return slots('active-icon') || h(Icon, {
+      if (this.status === 'process') {
+        return this.slots('active-icon') || h(Icon, {
           "class": bem('icon'),
           "attrs": {
             "name": activeIcon,
@@ -59,7 +38,7 @@ export default createComponent({
         });
       }
 
-      var inactiveIconSlot = slots('inactive-icon');
+      var inactiveIconSlot = this.slots('inactive-icon');
 
       if (inactiveIcon || inactiveIconSlot) {
         return inactiveIconSlot || h(Icon, {
@@ -74,7 +53,18 @@ export default createComponent({
         "class": bem('circle')
       });
     }
+  },
+  render: function render() {
+    var _ref;
 
+    var h = arguments[0];
+    var status = this.status;
+    var _this$parent2 = this.parent,
+        activeColor = _this$parent2.activeColor,
+        direction = _this$parent2.direction;
+    var titleStyle = status === 'process' && {
+      color: activeColor
+    };
     return h("div", {
       "class": [BORDER, bem([direction, (_ref = {}, _ref[status] = status, _ref)])]
     }, [h("div", {
@@ -82,7 +72,7 @@ export default createComponent({
       "style": titleStyle
     }, [this.slots()]), h("div", {
       "class": bem('circle-container')
-    }, [Circle()]), h("div", {
+    }, [this.genCircle()]), h("div", {
       "class": bem('line')
     })]);
   }

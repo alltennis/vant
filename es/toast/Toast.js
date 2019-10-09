@@ -25,6 +25,10 @@ export default createComponent({
       type: String,
       default: 'middle'
     },
+    transition: {
+      type: String,
+      default: 'van-fade'
+    },
     lockScroll: {
       type: Boolean,
       default: false
@@ -125,7 +129,7 @@ export default createComponent({
 
     return h("transition", {
       "attrs": {
-        "name": "van-fade"
+        "name": this.transition
       },
       "on": {
         "afterEnter": this.onAfterEnter,

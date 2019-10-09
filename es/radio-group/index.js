@@ -9,7 +9,9 @@ export default createComponent({
   mixins: [ParentMixin('vanRadio')],
   props: {
     value: null,
-    disabled: Boolean
+    disabled: Boolean,
+    checkedColor: String,
+    iconSize: [Number, String]
   },
   watch: {
     value: function value(_value) {

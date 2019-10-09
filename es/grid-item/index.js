@@ -12,8 +12,10 @@ var _createNamespace = createNamespace('grid-item'),
 export default createComponent({
   mixins: [ChildrenMixin('vanGrid')],
   props: _extends({}, routeProps, {
+    dot: Boolean,
+    text: String,
     icon: String,
-    text: String
+    info: [Number, String]
   }),
   computed: {
     style: function style() {
@@ -69,7 +71,10 @@ export default createComponent({
 
       return [this.slots('icon') || this.icon && h(Icon, {
         "attrs": {
-          "name": this.icon
+          "name": this.icon,
+          "dot": this.dot,
+          "info": this.info,
+          "size": this.parent.iconSize
         },
         "class": bem('icon')
       }), this.slots('text') || this.text && h("span", {
@@ -91,18 +96,22 @@ export default createComponent({
       "class": [bem({
         square: square
       })],
-      "style": this.style,
-      "on": {
-        "click": this.onClick
-      }
+      "style": this.style
     }, [h("div", {
       "style": this.contentStyle,
+      "attrs": {
+        "role": clickable ? 'button' : null,
+        "tabindex": clickable ? 0 : null
+      },
       "class": [bem('content', {
         center: center,
         square: square,
         clickable: clickable,
         surround: border && gutter
-      }), (_ref = {}, _ref[BORDER] = border, _ref)]
+      }), (_ref = {}, _ref[BORDER] = border, _ref)],
+      "on": {
+        "click": this.onClick
+      }
     }, [this.renderContent()])]);
   }
 });

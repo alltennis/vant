@@ -50,11 +50,6 @@ function AddressList(h, props, slots, ctx) {
   }, inherit(ctx)]), [slots.top && slots.top(), h(RadioGroup, {
     "attrs": {
       "value": props.value
-    },
-    "on": {
-      "input": function input(event) {
-        emit(ctx, 'input', event);
-      }
     }
   }, [List]), props.disabledText && h("div", {
     "class": bem('disabled-text')

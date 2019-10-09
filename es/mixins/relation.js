@@ -31,6 +31,10 @@ export function ChildrenMixin(_parent, options) {
     }, _inject),
     computed: (_computed = {
       parent: function parent() {
+        if (this.disableBindRelation) {
+          return null;
+        }
+
         return this[_parent];
       }
     }, _computed[indexKey] = function () {

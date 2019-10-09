@@ -26,25 +26,29 @@ function Search(h, props, slots, ctx) {
     }
 
     function onCancel() {
+      if (slots.action) {
+        return;
+      }
+
       emit(ctx, 'input', '');
       emit(ctx, 'cancel');
     }
 
     return h("div", {
-      "class": bem('action')
-    }, [slots.action ? slots.action() : h("div", {
+      "class": bem('action'),
+      "attrs": {
+        "role": "button",
+        "tabindex": "0"
+      },
       "on": {
         "click": onCancel
       }
-    }, [t('cancel')])]);
+    }, [slots.action ? slots.action() : props.actionText || t('cancel')]);
   }
 
   var fieldData = {
     attrs: ctx.data.attrs,
     on: _extends({}, ctx.listeners, {
-      input: function input(value) {
-        emit(ctx, 'input', value);
-      },
       keypress: function keypress(event) {
         // press enter
         if (event.keyCode === 13) {
@@ -87,6 +91,7 @@ Search.props = {
   value: String,
   label: String,
   rightIcon: String,
+  actionText: String,
   showAction: Boolean,
   shape: {
     type: String,

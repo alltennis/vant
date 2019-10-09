@@ -52,11 +52,12 @@ function Cell(h, props, slots, ctx) {
     functionalRoute(ctx);
   }
 
+  var clickable = isLink || props.clickable;
   var classes = {
+    clickable: clickable,
     center: props.center,
     required: props.required,
-    borderless: !props.border,
-    clickable: isLink || props.clickable
+    borderless: !props.border
   };
 
   if (size) {
@@ -65,6 +66,10 @@ function Cell(h, props, slots, ctx) {
 
   return h("div", _mergeJSXProps([{
     "class": bem(classes),
+    "attrs": {
+      "role": clickable ? 'button' : null,
+      "tabindex": clickable ? 0 : null
+    },
     "on": {
       "click": onClick
     }

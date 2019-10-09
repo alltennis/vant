@@ -35,14 +35,14 @@ function Overlay(h, props, slots, ctx) {
     "on": {
       "touchmove": preventTouchMove
     }
-  }, inherit(ctx, true)]))]);
+  }, inherit(ctx, true)]), [slots.default && slots.default()])]);
 }
 
 Overlay.props = {
   show: Boolean,
   duration: [Number, String],
   className: null,
-  customStyle: null,
+  customStyle: Object,
   zIndex: {
     type: [Number, String],
     default: 1

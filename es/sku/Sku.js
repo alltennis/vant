@@ -14,8 +14,9 @@ import { createNamespace, isDef } from '../utils';
 import { isAllSelected, isSkuChoosable, getSkuComb, getSelectedSkuValues } from './utils/skuHelper';
 import { LIMIT_TYPE, UNSELECTED_SKU_VALUE_ID } from './constants';
 var namespace = createNamespace('sku');
-var createComponent = namespace[0];
-var t = namespace[2];
+var createComponent = namespace[0],
+    bem = namespace[1],
+    t = namespace[2];
 var QUOTA_LIMIT = LIMIT_TYPE.QUOTA_LIMIT;
 export default createComponent({
   props: {
@@ -35,6 +36,7 @@ export default createComponent({
     customSkuValidator: Function,
     closeOnClickOverlay: Boolean,
     disableStepperInput: Boolean,
+    safeAreaInsetBottom: Boolean,
     resetSelectedSkuOnHide: Boolean,
     quota: {
       type: Number,
@@ -49,6 +51,10 @@ export default createComponent({
       default: function _default() {
         return {};
       }
+    },
+    stockThreshold: {
+      type: Number,
+      default: 50
     },
     showSoldoutSku: {
       type: Boolean,
@@ -189,7 +195,7 @@ export default createComponent({
           }
 
           treeItem.v.forEach(function (vItem) {
-            var img = vItem.imgUrl || vItem.img_url;
+            var img = vItem.previewImgUrl || vItem.imgUrl || vItem.img_url;
 
             if (img) {
               imageList.push(img);
@@ -214,9 +220,14 @@ export default createComponent({
       return this.sku.stock_num;
     },
     stockText: function stockText() {
+      var h = this.$createElement;
       var stockFormatter = this.customStepperConfig.stockFormatter;
       if (stockFormatter) return stockFormatter(this.stock);
-      return t('stock', this.stock);
+      return [t('stock') + " ", h("span", {
+        "class": bem('stock-num', {
+          highlight: this.stock < this.stockThreshold
+        })
+      }, [this.stock]), " " + t('stockUnit')];
     },
     quotaText: function quotaText() {
       var _this$customStepperCo = this.customStepperConfig,
@@ -253,7 +264,6 @@ export default createComponent({
   created: function created() {
     var skuEventBus = new Vue();
     this.skuEventBus = skuEventBus;
-    skuEventBus.$on('sku:close', this.onClose);
     skuEventBus.$on('sku:select', this.onSelect);
     skuEventBus.$on('sku:numChange', this.onNumChange);
     skuEventBus.$on('sku:previewImage', this.onPreviewImage);
@@ -323,9 +333,6 @@ export default createComponent({
       }
 
       return t('selectSku');
-    },
-    onClose: function onClose() {
-      this.show = false;
     },
     onSelect: function onSelect(skuValue) {
       var _extends2, _extends3;
@@ -520,10 +527,12 @@ export default createComponent({
     });
     return h(Popup, {
       "attrs": {
+        "round": true,
+        "closeable": true,
         "position": "bottom",
         "getContainer": this.getContainer,
         "closeOnClickOverlay": this.closeOnClickOverlay,
-        "round": true
+        "safeAreaInsetBottom": this.safeAreaInsetBottom
       },
       "class": "van-sku-container",
       "model": {

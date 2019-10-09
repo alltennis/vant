@@ -125,7 +125,10 @@ export default createComponent({
 
     var h = arguments[0];
     return h(CellGroup, {
-      "class": bem()
+      "class": bem(),
+      "attrs": {
+        "border": this.messages.length > 0
+      }
     }, [this.messages.map(function (message, index) {
       return message.type === 'image' ? h(Cell, {
         "class": bem('image-cell'),

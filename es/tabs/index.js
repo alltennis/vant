@@ -1,5 +1,6 @@
 import { createNamespace, isDef, addUnit } from '../utils';
 import { scrollLeftTo } from './utils';
+import { route } from '../utils/router';
 import { isHidden } from '../utils/dom/style';
 import { ParentMixin } from '../mixins/relation';
 import { BindEventMixin } from '../mixins/bind-event';
@@ -269,6 +270,8 @@ export default createComponent({
         "on": {
           "click": function click() {
             _this5.onClick(index);
+
+            route(item.$router, item);
           }
         }
       });

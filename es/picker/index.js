@@ -162,22 +162,14 @@ export default createComponent({
     };
     var Toolbar = this.showToolbar && h("div", {
       "class": [BORDER_TOP_BOTTOM, bem('toolbar')]
-    }, [this.slots() || [h("div", {
-      "attrs": {
-        "role": "button",
-        "tabindex": "0"
-      },
+    }, [this.slots() || [h("button", {
       "class": bem('cancel'),
       "on": {
         "click": this.onCancel
       }
     }, [this.cancelButtonText || t('cancel')]), this.slots('title') || this.title && h("div", {
       "class": ['van-ellipsis', bem('title')]
-    }, [this.title]), h("div", {
-      "attrs": {
-        "role": "button",
-        "tabindex": "0"
-      },
+    }, [this.title]), h("button", {
       "class": bem('confirm'),
       "on": {
         "click": this.onConfirm
@@ -190,7 +182,7 @@ export default createComponent({
       "attrs": {
         "color": BLUE
       }
-    }) : h(), h("div", {
+    }) : h(), this.slots('columns-top'), h("div", {
       "class": bem('columns'),
       "style": columnsStyle,
       "on": {
@@ -219,6 +211,6 @@ export default createComponent({
     }), h("div", {
       "class": [BORDER_UNSET_TOP_BOTTOM, bem('frame')],
       "style": frameStyle
-    })]), this.toolbarPosition === 'bottom' ? Toolbar : h()]);
+    })]), this.slots('columns-bottom'), this.toolbarPosition === 'bottom' ? Toolbar : h()]);
   }
 });

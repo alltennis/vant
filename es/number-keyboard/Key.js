@@ -40,6 +40,8 @@ export default createComponent({
   },
   methods: {
     onTouchStart: function onTouchStart(event) {
+      // compatible with Vue 2.6 event bubble bug
+      event.stopPropagation();
       this.touchStart(event);
       this.active = true;
     },

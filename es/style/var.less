@@ -14,8 +14,9 @@
 
 // Component Colors
 @text-color: #323233;
-@border-color: #ebedf0;
 @active-color: #f2f3f5;
+@active-opacity: .7;
+@disabled-opacity: .5;
 @background-color: #f8f8f8;
 @background-color-light: #fafafa;
 
@@ -27,15 +28,22 @@
 @padding-lg: @padding-base * 6;
 @padding-xl: @padding-base * 8;
 
-// Font Size
+// Font
 @font-size-xs: 10px;
 @font-size-sm: 12px;
 @font-size-md: 14px;
 @font-size-lg: 16px;
+@font-weight-bold: 500;
 
 // Animation
 @animation-duration-base: .3s;
 @animation-duration-fast: .2s;
+
+// Border
+@border-color: #ebedf0;
+@border-width-base: 1px;
+@border-radius-sm: 2px;
+@border-radius-md: 4px;
 
 // ActionSheet
 @action-sheet-max-height: 90%;
@@ -64,12 +72,13 @@
 @address-list-disabled-text-color: @gray-dark;
 @address-list-disabled-text-font-size: @font-size-sm;
 @address-list-disabled-text-line-height: 30px;
-@address-list-add-button-z-index: 9999;
+@address-list-add-button-z-index: 999;
 @address-list-item-padding: @padding-md;
 @address-list-item-text-color: @gray-darker;
 @address-list-item-disabled-text-color: @gray-dark;
 @address-list-item-font-size: @font-size-sm;
 @address-list-item-line-height: 16px;
+@address-list-item-radio-icon-color: @red;
 @address-list-edit-icon-size: 16px;
 
 // Button
@@ -102,11 +111,11 @@
 @button-warning-color: @white;
 @button-warning-background-color: @orange;
 @button-warning-border-color: @orange;
-@button-border-width: 1px;
-@button-border-radius: 2px;
+@button-border-width: @border-width-base;
+@button-border-radius: @border-radius-sm;
 @button-round-border-radius: 10em;
 @button-plain-background-color: @white;
-@button-disabled-opacity: .5;
+@button-disabled-opacity: @disabled-opacity;
 
 // Card
 @card-padding: @padding-xs @padding-md;
@@ -162,6 +171,9 @@
 
 // Circle
 @circle-text-color: @text-color;
+@circle-text-font-weight: @font-weight-bold;
+@circle-text-font-size: @font-size-md;
+@circle-text-line-height: 18px;
 
 // Collapse
 @collapse-item-transition-duration: @animation-duration-base;
@@ -185,7 +197,7 @@
 
 // ContactList
 @contact-list-edit-icon-size: 16px;
-@contact-list-add-button-z-index: 9999;
+@contact-list-add-button-z-index: 999;
 @contact-list-item-padding: @padding-md;
 
 // CountDown
@@ -199,7 +211,7 @@
 @coupon-content-padding: @padding-lg 0 0 @padding-md;
 @coupon-background-color: @white;
 @coupon-active-background-color: @active-color;
-@coupon-border-radius: 4px;
+@coupon-border-radius: @border-radius-md;
 @coupon-box-shadow: 0 0 4px rgba(0, 0, 0, 0.1);
 @coupon-head-width: 85px;
 @coupon-amount-color: @red;
@@ -227,9 +239,9 @@
 @dialog-width: 85%;
 @dialog-font-size: @font-size-lg;
 @dialog-transition: @animation-duration-base;
-@dialog-border-radius: 4px;
+@dialog-border-radius: @border-radius-md;
 @dialog-background-color: @white;
-@dialog-header-font-weight: 500;
+@dialog-header-font-weight: @font-weight-bold;
 @dialog-header-line-height: 24px;
 @dialog-header-padding-top: @padding-lg;
 @dialog-header-isolated-padding: @padding-lg 0;
@@ -261,6 +273,7 @@
 @dropdown-menu-title-padding: 0 @padding-xs;
 @dropdown-menu-title-line-height: 18px;
 @dropdown-menu-option-active-color: @blue;
+@dropdown-menu-content-max-height: 80%;
 
 // Field
 @field-label-width: 90px;
@@ -293,11 +306,14 @@
 @goods-action-icon-font-size: @font-size-xs;
 @goods-action-icon-active-color: @active-color;
 @goods-action-icon-text-color: @gray-darker;
+@goods-action-button-height: 40px;
+@goods-action-button-warning-color: linear-gradient(to right, #ffd01e, #ff8917);
+@goods-action-button-danger-color: linear-gradient(to right, #ff6034, #ee0a24);
 
 // IndexAnchor
 @index-anchor-padding: 0 @padding-md;
 @index-anchor-text-color: @text-color;
-@index-anchor-font-weight: 500;
+@index-anchor-font-weight: @font-weight-bold;
 @index-anchor-font-size: @font-size-md;
 @index-anchor-line-height: 32px;
 @index-anchor-background-color: transparent;
@@ -312,9 +328,11 @@
 @info-color: @white;
 @info-padding: 0 3px;
 @info-font-size: @font-size-sm;
-@info-font-weight: 500;
-@info-border-width: 1px;
+@info-font-weight: @font-weight-bold;
+@info-border-width: @border-width-base;
 @info-background-color: @red;
+@info-dot-color: @red;
+@info-dot-size: 8px;
 @info-font-family: PingFang SC, Helvetica Neue, Arial, sans-serif;
 
 // Image
@@ -398,7 +416,7 @@
 @pagination-item-disabled-background-color: @background-color;
 @pagination-background-color: @white;
 @pagination-desc-color: @gray-darker;
-@pagination-disabled-opacity: 0.6;
+@pagination-disabled-opacity: @disabled-opacity;
 
 // Panel
 @panel-background-color: @white;
@@ -431,8 +449,8 @@
 
 // Popup
 @popup-background-color: @white;
-@popup-transition: @animation-duration-base ease-out;
-@popup-round-border-radius: 12px;
+@popup-transition: transform @animation-duration-base ease-out;
+@popup-round-border-radius: 20px;
 @popup-close-icon-size: 18px;
 @popup-close-icon-color: @gray-dark;
 @popup-close-icon-margin: 16px;
@@ -489,7 +507,7 @@
 @sidebar-padding: 20px @padding-sm 20px @padding-xs;
 @sidebar-active-color: @active-color;
 @sidebar-background-color: @background-color-light;
-@sidebar-selected-font-weight: 500;
+@sidebar-selected-font-weight: @font-weight-bold;
 @sidebar-selected-text-color: @text-color;
 @sidebar-selected-border-color: @red;
 @sidebar-selected-background-color: @white;
@@ -504,7 +522,7 @@
 // Slider
 @slider-active-background-color: @blue;
 @slider-inactive-background-color: @gray-light;
-@slider-disabled-opacity: .3;
+@slider-disabled-opacity: @disabled-opacity;
 @slider-button-width: 20px;
 @slider-button-height: 20px;
 @slider-button-border-radius: 50%;
@@ -541,7 +559,7 @@
 @stepper-input-text-color: @text-color;
 @stepper-input-disabled-text-color: @gray;
 @stepper-input-disabled-background-color: @active-color;
-@stepper-border-radius: 4px;
+@stepper-border-radius: @border-radius-md;
 
 // SubmitBar
 @submit-bar-height: 50px;
@@ -578,8 +596,8 @@
 @switch-background-color: @white;
 @switch-on-background-color: @blue;
 @switch-transition-duration: @animation-duration-base;
-@switch-disabled-opacity: .4;
-@switch-border: 1px solid rgba(0, 0, 0, .1);
+@switch-disabled-opacity: @disabled-opacity;
+@switch-border: @border-width-base solid rgba(0, 0, 0, .1);
 
 // SwitchCell
 @switch-cell-padding-top: @cell-vertical-padding - 1px;
@@ -633,7 +651,7 @@
 @toast-font-size: @font-size-md;
 @toast-text-color: @white;
 @toast-line-height: 20px;
-@toast-border-radius: 4px;
+@toast-border-radius: @border-radius-md;
 @toast-background-color: rgba(@text-color, .88);
 @toast-icon-size: 40px;
 @toast-text-min-width: 96px;
@@ -666,6 +684,8 @@
 @uploader-file-background-color: @background-color;
 @uploader-file-icon-size: 20px;
 @uploader-file-icon-color: @gray-darker;
+@uploader-file-name-padding: 0 @padding-base;
+@uploader-file-name-margin-top: @padding-xs;
 @uploader-file-name-font-size: @font-size-sm;
 @uploader-file-name-text-color: @gray-darker;
 

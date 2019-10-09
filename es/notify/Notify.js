@@ -20,6 +20,7 @@ function Notify(h, props, slots, ctx) {
       "value": props.value,
       "position": "top",
       "overlay": false,
+      "duration": 0.2,
       "lockScroll": false
     },
     "style": style,

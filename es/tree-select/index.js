@@ -22,9 +22,12 @@ function TreeSelect(h, props, slots, ctx) {
     return isMultiple ? activeId.indexOf(id) !== -1 : activeId === id;
   }
 
-  var Navs = items.map(function (item) {
+  var Navs = items.filter(function (item) {
+    return item.text;
+  }).map(function (item) {
     return h(SidebarItem, {
       "attrs": {
+        "dot": item.dot,
         "info": item.info,
         "title": item.text,
         "disabled": item.disabled

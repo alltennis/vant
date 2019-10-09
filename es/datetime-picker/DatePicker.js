@@ -125,14 +125,21 @@ export default createComponent({
     onChange: function onChange(picker) {
       var _this = this;
 
-      var values = picker.getValues();
-      var year = getTrueValue(values[0]);
-      var month = getTrueValue(values[1]);
+      var indexes = picker.getIndexes();
+
+      var getValue = function getValue(index) {
+        return getTrueValue(_this.originColumns[index].values[indexes[index]]);
+      };
+
+      var year = getValue(0);
+      var month = getValue(1);
       var maxDate = getMonthEndDay(year, month);
-      var date = getTrueValue(values[2]);
+      var date;
 
       if (this.type === 'year-month') {
         date = 1;
+      } else {
+        date = getValue(2);
       }
 
       date = date > maxDate ? maxDate : date;
@@ -140,8 +147,8 @@ export default createComponent({
       var minute = 0;
 
       if (this.type === 'datetime') {
-        hour = getTrueValue(values[3]);
-        minute = getTrueValue(values[4]);
+        hour = getValue(3);
+        minute = getValue(4);
       }
 
       var value = new Date(year, month - 1, date, hour, minute);

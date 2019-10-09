@@ -10,6 +10,8 @@ export default createComponent({
   props: {
     max: Number,
     disabled: Boolean,
+    iconSize: [Number, String],
+    checkedColor: String,
     value: {
       type: Array,
       default: function _default() {
@@ -20,6 +22,13 @@ export default createComponent({
   watch: {
     value: function value(val) {
       this.$emit('change', val);
+    }
+  },
+  methods: {
+    toggleAll: function toggleAll(checked) {
+      this.children.forEach(function (item) {
+        item.toggle(checked);
+      });
     }
   },
   render: function render() {

@@ -61,9 +61,7 @@ export default createComponent({
         "click": this.onClick
       }
     }, [h("div", {
-      "class": bem('icon', {
-        dot: this.dot
-      })
+      "class": bem('icon')
     }, [slots('icon', {
       active: active
     }) || icon && h(Icon, {
@@ -72,6 +70,7 @@ export default createComponent({
       }
     }), h(Info, {
       "attrs": {
+        "dot": this.dot,
         "info": this.info
       }
     })]), h("div", {

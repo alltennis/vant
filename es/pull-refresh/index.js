@@ -134,7 +134,7 @@ export default createComponent({
         distance = this.distance;
     var text = this[status + "Text"] || t(status);
     var style = {
-      transition: this.duration + "ms",
+      transitionDuration: this.duration + "ms",
       transform: this.distance ? "translate3d(0," + this.distance + "px, 0)" : ''
     };
     var Status = this.slots(status, {

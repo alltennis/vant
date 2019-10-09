@@ -1,6 +1,5 @@
 import _mergeJSXProps from "@vue/babel-helper-vue-jsx-merge-props";
 import { createNamespace } from '../utils';
-import { RED } from '../utils/constant';
 import { emit, inherit } from '../utils/functional';
 import Icon from '../icon';
 import Cell from '../cell';
@@ -48,8 +47,7 @@ function AddressItem(h, props, slots, ctx) {
     return switchable && !disabled ? h(Radio, {
       "attrs": {
         "name": data.id,
-        "iconSize": 16,
-        "checkedColor": RED
+        "iconSize": 16
       }
     }, [Info]) : Info;
   };

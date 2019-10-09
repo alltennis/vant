@@ -21,14 +21,21 @@ export var CheckboxMixin = function CheckboxMixin(_ref) {
       shape: {
         type: String,
         default: 'round'
+      },
+      bindGroup: {
+        type: Boolean,
+        default: true
       }
     },
     computed: {
+      disableBindRelation: function disableBindRelation() {
+        return !this.bindGroup;
+      },
       isDisabled: function isDisabled() {
         return this.parent && this.parent.disabled || this.disabled;
       },
       iconStyle: function iconStyle() {
-        var checkedColor = this.checkedColor;
+        var checkedColor = this.checkedColor || this.parent && this.parent.checkedColor;
 
         if (checkedColor && this.checked && !this.isDisabled) {
           return {
@@ -76,13 +83,14 @@ export var CheckboxMixin = function CheckboxMixin(_ref) {
           disabled: this.isDisabled
         }])
       }, [slots()]);
+      var iconSize = this.iconSize || this.parent && this.parent.iconSize;
       var Children = [h("div", {
         "class": bem('icon', [this.shape, {
           disabled: this.isDisabled,
           checked: checked
         }]),
         "style": {
-          fontSize: addUnit(this.iconSize)
+          fontSize: addUnit(iconSize)
         }
       }, [CheckIcon])];
 

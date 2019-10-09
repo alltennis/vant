@@ -29,12 +29,14 @@ function Icon(h, props, slots, ctx) {
     }
   }), h(Info, {
     "attrs": {
+      "dot": props.dot,
       "info": props.info
     }
   })]);
 }
 
 Icon.props = {
+  dot: Boolean,
   name: String,
   size: [Number, String],
   info: [Number, String],

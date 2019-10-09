@@ -61,16 +61,21 @@ export default createComponent({
     }
   },
   computed: {
-    detail: function detail() {
-      return {
-        name: this.name
-      };
-    },
     previewSizeWithUnit: function previewSizeWithUnit() {
       return addUnit(this.previewSize);
     }
   },
   methods: {
+    getDetail: function getDetail(index) {
+      if (index === void 0) {
+        index = this.fileList.length;
+      }
+
+      return {
+        name: this.name,
+        index: index
+      };
+    },
     onChange: function onChange(event) {
       var _this = this;
 
@@ -83,7 +88,7 @@ export default createComponent({
       files = files.length === 1 ? files[0] : [].slice.call(files);
 
       if (this.beforeRead) {
-        var response = this.beforeRead(files, this.detail);
+        var response = this.beforeRead(files, this.getDetail());
 
         if (!response) {
           this.resetInput();
@@ -135,7 +140,7 @@ export default createComponent({
     },
     onAfterRead: function onAfterRead(files, oversize) {
       if (oversize) {
-        this.$emit('oversize', files, this.detail);
+        this.$emit('oversize', files, this.getDetail());
         return;
       }
 
@@ -143,14 +148,14 @@ export default createComponent({
       this.$emit('input', [].concat(this.fileList, toArray(files)));
 
       if (this.afterRead) {
-        this.afterRead(files, this.detail);
+        this.afterRead(files, this.getDetail());
       }
     },
     onDelete: function onDelete(file, index) {
       var _this3 = this;
 
       if (this.beforeDelete) {
-        var response = this.beforeDelete(file, this.detail);
+        var response = this.beforeDelete(file, this.getDetail(index));
 
         if (!response) {
           return;
@@ -170,7 +175,7 @@ export default createComponent({
       var fileList = this.fileList.slice(0);
       fileList.splice(index, 1);
       this.$emit('input', fileList);
-      this.$emit('delete', file);
+      this.$emit('delete', file, this.getDetail(index));
     },
     resetInput: function resetInput() {
       /* istanbul ignore else */
@@ -187,76 +192,76 @@ export default createComponent({
 
       var imageFiles = this.fileList.filter(function (item) {
         return isImageFile(item);
-      }).map(function (item) {
+      });
+      var imageContents = imageFiles.map(function (item) {
         return item.content || item.url;
       });
       ImagePreview({
-        images: imageFiles,
+        images: imageContents,
         closeOnPopstate: true,
-        startPosition: imageFiles.indexOf(item.content || item.url),
+        startPosition: imageFiles.indexOf(item),
         onClose: function onClose() {
           _this4.$emit('close-preview');
         }
       });
     },
-    onClickPreview: function onClickPreview(file) {
-      this.$emit('click-preview', file, this.detail);
-    },
-    renderPreview: function renderPreview() {
+    renderPreviewItem: function renderPreviewItem(item, index) {
       var _this5 = this;
 
       var h = this.$createElement;
+      var DeleteIcon = h(Icon, {
+        "attrs": {
+          "name": "delete"
+        },
+        "class": bem('preview-delete'),
+        "on": {
+          "click": function click(event) {
+            event.stopPropagation();
 
-      if (!this.previewImage) {
-        return;
-      }
-
-      return this.fileList.map(function (item, index) {
-        return h("div", {
-          "class": bem('preview'),
-          "on": {
-            "click": function click() {
-              _this5.onClickPreview(item);
-            }
+            _this5.onDelete(item, index);
           }
-        }, [isImageFile(item) ? h(Image, {
-          "attrs": {
-            "fit": _this5.imageFit,
-            "src": item.content || item.url,
-            "width": _this5.previewSize,
-            "height": _this5.previewSize
-          },
-          "class": bem('preview-image'),
-          "on": {
-            "click": function click() {
-              _this5.onPreviewImage(item);
-            }
-          }
-        }) : h("div", {
-          "class": bem('file'),
-          "style": {
-            width: _this5.previewSizeWithUnit,
-            height: _this5.previewSizeWithUnit
-          }
-        }, [h(Icon, {
-          "class": bem('file-icon'),
-          "attrs": {
-            "name": "description"
-          }
-        }), h("div", {
-          "class": [bem('file-name'), 'van-ellipsis']
-        }, [item.file ? item.file.name : item.url])]), h(Icon, {
-          "attrs": {
-            "name": "delete"
-          },
-          "class": bem('preview-delete'),
-          "on": {
-            "click": function click() {
-              _this5.onDelete(item, index);
-            }
-          }
-        })]);
+        }
       });
+      var Preview = isImageFile(item) ? h(Image, {
+        "attrs": {
+          "fit": this.imageFit,
+          "src": item.content || item.url,
+          "width": this.previewSize,
+          "height": this.previewSize
+        },
+        "class": bem('preview-image'),
+        "on": {
+          "click": function click() {
+            _this5.onPreviewImage(item);
+          }
+        }
+      }) : h("div", {
+        "class": bem('file'),
+        "style": {
+          width: this.previewSizeWithUnit,
+          height: this.previewSizeWithUnit
+        }
+      }, [h(Icon, {
+        "class": bem('file-icon'),
+        "attrs": {
+          "name": "description"
+        }
+      }), h("div", {
+        "class": [bem('file-name'), 'van-ellipsis']
+      }, [item.file ? item.file.name : item.url])]);
+      return h("div", {
+        "class": bem('preview'),
+        "on": {
+          "click": function click() {
+            _this5.$emit('click-preview', item, _this5.getDetail(index));
+          }
+        }
+      }, [Preview, DeleteIcon]);
+    },
+    renderPreviewList: function renderPreviewList() {
+      if (this.previewImage) {
+        return this.fileList.map(this.renderPreviewItem);
+      }
     },
     renderUpload: function renderUpload() {
       var h = this.$createElement;
@@ -314,6 +319,6 @@ export default createComponent({
       "class": bem()
     }, [h("div", {
       "class": bem('wrapper')
-    }, [this.renderPreview(), this.renderUpload()])]);
+    }, [this.renderPreviewList(), this.renderUpload()])]);
   }
 });

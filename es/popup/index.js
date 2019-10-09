@@ -13,9 +13,14 @@ export default createComponent({
     duration: Number,
     closeable: Boolean,
     transition: String,
+    safeAreaInsetBottom: Boolean,
     closeIcon: {
       type: String,
       default: 'cross'
+    },
+    closeIconPosition: {
+      type: String,
+      default: 'top-right'
     },
     position: {
       type: String,
@@ -78,15 +83,17 @@ export default createComponent({
       "style": style,
       "class": bem((_bem = {
         round: round
-      }, _bem[position] = position, _bem)),
+      }, _bem[position] = position, _bem['safe-area-inset-bottom'] = this.safeAreaInsetBottom, _bem)),
       "on": {
         "click": this.onClick
       }
     }, [this.slots(), this.closeable && h(Icon, {
       "attrs": {
+        "role": "button",
+        "tabindex": "0",
         "name": this.closeIcon
       },
-      "class": bem('close-icon'),
+      "class": bem('close-icon', this.closeIconPosition),
       "on": {
         "click": this.close
       }

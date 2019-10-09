@@ -82,7 +82,7 @@ function ActionSheet(h, props, slots, ctx) {
       }, [item.subname])];
     }
 
-    return h("div", {
+    return h("button", {
       "class": [bem('item', {
         disabled: disabled
       }), item.className, BORDER_TOP],
@@ -97,7 +97,7 @@ function ActionSheet(h, props, slots, ctx) {
 
   function CancelText() {
     if (cancelText) {
-      return h("div", {
+      return h("button", {
         "class": bem('cancel'),
         "on": {
           "click": onCancel
@@ -107,9 +107,7 @@ function ActionSheet(h, props, slots, ctx) {
   }
 
   return h(Popup, _mergeJSXProps([{
-    "class": bem({
-      'safe-area-inset-bottom': props.safeAreaInsetBottom
-    }),
+    "class": bem(),
     "attrs": {
       "position": "bottom",
       "round": props.round,
@@ -119,20 +117,27 @@ function ActionSheet(h, props, slots, ctx) {
       "lazyRender": props.lazyRender,
       "lockScroll": props.lockScroll,
       "getContainer": props.getContainer,
-      "closeOnClickOverlay": props.closeOnClickOverlay
+      "closeOnClickOverlay": props.closeOnClickOverlay,
+      "safeAreaInsetBottom": props.safeAreaInsetBottom
     }
   }, inherit(ctx, true)]), [Header(), props.actions && props.actions.map(Option), Content(), CancelText()]);
 }
 
 ActionSheet.props = _extends({}, PopupMixin.props, {
   title: String,
-  round: Boolean,
   actions: Array,
   duration: Number,
   cancelText: String,
   getContainer: [String, Function],
   closeOnClickAction: Boolean,
-  safeAreaInsetBottom: Boolean,
+  round: {
+    type: Boolean,
+    default: true
+  },
+  safeAreaInsetBottom: {
+    type: Boolean,
+    default: true
+  },
   overlay: {
     type: Boolean,
     default: true
