@@ -14,16 +14,9 @@ Vue.use(Overlay);
 ### Basic Usage
 
 ```html
-<van-button
-  type="primary"
-  text="Show Overlay"
-  @click="show = true"
-/>
+<van-button type="primary" text="Show Overlay" @click="show = true" />
 
-<van-overlay
-  :show="show"
-  @click="show = false"
-/>
+<van-overlay :show="show" @click="show = false" />
 ```
 
 ```js
@@ -46,9 +39,16 @@ export default {
 | z-index | z-index | *string \| number* | `1` | - |
 | duration | Animation duration | *string \| number* | `0.3` | - |
 | class-name | ClassName | *string* | - | - |
+| custom-class | Custom style | *object* | - | - |
 
 ### Events
 
 | Event | Description | Arguments |
 |------|------|------|
 | click | Triggered when clicked | event: Event |
+
+### Slots
+
+| Name | Description |
+|------|------|
+| default | Default slot |

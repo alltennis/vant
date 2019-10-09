@@ -105,14 +105,14 @@ export default {
 
 ### Methods
 
-| Name | Attribute | Return value | Description |
+| Name | Description | Attribute | Return value |
 |------|------|------|------|
-| Dialog | `options` | `Promise` | Show dialog |
-| Dialog.alert | `options` | `Promise` | Show alert dialog |
-| Dialog.confirm | `options` | `Promise` | Show confim dialog |
-| Dialog.setDefaultOptions | `options` | `void` | Set default options of all dialogs |
-| Dialog.resetDefaultOptions | - | `void` | Reset default options of all dialogs |
-| Dialog.close | - | `void` | Close dialog |
+| Dialog | Show dialog | `options` | `Promise` |
+| Dialog.alert | Show alert dialog | `options` | `Promise` |
+| Dialog.confirm | Show confim dialog | `options` | `Promise` |
+| Dialog.setDefaultOptions | Set default options of all dialogs | `options` | `void` |
+| Dialog.resetDefaultOptions | Reset default options of all dialogs | - | `void` |
+| Dialog.close | Close dialog | - | `void` |
 
 ### Options
 
@@ -133,7 +133,8 @@ export default {
 | closeOnClickOverlay | Whether to close when click overlay | *boolean* | `false` | - |
 | lockScroll | Whether to lock body scroll | *boolean* | `true` | - |
 | beforeClose | Callback before close,<br>call done() to close dialog,<br>call done(false) to cancel loading | (action: string, done: Function) => void | - | - |
-| getContainer | Return the mount node for Dialog | *string \| () => HTMLElement* | `body` | - |
+| transition | Transition, equivalent to `name` prop of [transtion](https://vuejs.org/v2/api/#transition) | *string* | - | 2.2.6 |
+| getContainer | Return the mount node for Dialog | *string \| () => Element* | `body` | - |
 
 ### Props
 
@@ -154,7 +155,8 @@ export default {
 | close-on-click-overlay | Whether to close when click overlay | *boolean* | `false` | - |
 | lock-scroll | Whether to lock background scroll | *boolean* | `true` | - |
 | before-close | Callback before close,<br>call done() to close dialog,<br>call done(false) to cancel loading | (action: string, done: Function) => void | - | - |
-| get-container | Return the mount node for Dialog | *string \| () => HTMLElement* | - | - |
+| transition | Transition, equivalent to `name` prop of [transtion](https://vuejs.org/v2/api/#transition) | *string* | - | 2.2.6 |
+| get-container | Return the mount node for Dialog | *string \| () => Element* | - | - |
 
 ### Events
 
@@ -162,6 +164,10 @@ export default {
 |------|------|------|
 | confirm | Triggered when click confirm button | - |
 | cancel | Triggered when click cancel button | - |
+| open | Triggered when open Dialog | - |
+| opened | Triggered when opened Dialog | - |
+| close | Triggered when close Dialog | - |
+| closed | Triggered when closed Dialog | - |
 
 ### Slots
 

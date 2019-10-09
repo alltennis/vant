@@ -7,6 +7,7 @@ export type DialogOptions = {
   overlay?: boolean;
   className?: any;
   lockScroll?: boolean;
+  transition?: string;
   messageAlign?: string;
   closeOnPopstate?: boolean;
   cancelButtonText?: string;
@@ -16,7 +17,7 @@ export type DialogOptions = {
   showConfirmButton?: boolean;
   showCancelButton?: boolean;
   closeOnClickOverlay?: boolean;
-  getContainer?: string | (() => HTMLElement);
+  getContainer?: string | (() => Element);
   beforeClose?: (action: DialogAction, done: DialogDone) => void;
 };
 

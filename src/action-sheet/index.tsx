@@ -22,8 +22,8 @@ export type ActionSheetItem = {
 };
 
 export type ActionSheetProps = PopupMixinProps & {
+  round: boolean;
   title?: string;
-  round?: boolean;
   actions?: ActionSheetItem[];
   duration: number;
   cancelText?: string;
@@ -96,29 +96,29 @@ function ActionSheet(
     }
 
     return (
-      <div
+      <button
         class={[bem('item', { disabled }), item.className, BORDER_TOP]}
         style={{ color: item.color }}
         onClick={onClickOption}
       >
         {OptionContent()}
-      </div>
+      </button>
     );
   }
 
   function CancelText() {
     if (cancelText) {
       return (
-        <div class={bem('cancel')} onClick={onCancel}>
+        <button class={bem('cancel')} onClick={onCancel}>
           {cancelText}
-        </div>
+        </button>
       );
     }
   }
 
   return (
     <Popup
-      class={bem({ 'safe-area-inset-bottom': props.safeAreaInsetBottom })}
+      class={bem()}
       position="bottom"
       round={props.round}
       value={props.value}
@@ -128,6 +128,7 @@ function ActionSheet(
       lockScroll={props.lockScroll}
       getContainer={props.getContainer}
       closeOnClickOverlay={props.closeOnClickOverlay}
+      safeAreaInsetBottom={props.safeAreaInsetBottom}
       {...inherit(ctx, true)}
     >
       {Header()}
@@ -141,13 +142,19 @@ function ActionSheet(
 ActionSheet.props = {
   ...PopupMixin.props,
   title: String,
-  round: Boolean,
   actions: Array,
   duration: Number,
   cancelText: String,
   getContainer: [String, Function],
   closeOnClickAction: Boolean,
-  safeAreaInsetBottom: Boolean,
+  round: {
+    type: Boolean,
+    default: true
+  },
+  safeAreaInsetBottom: {
+    type: Boolean,
+    default: true
+  },
   overlay: {
     type: Boolean,
     default: true

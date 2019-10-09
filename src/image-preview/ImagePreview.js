@@ -13,10 +13,8 @@ const [createComponent, bem] = createNamespace('image-preview');
 
 function getDistance(touches) {
   return Math.sqrt(
-    Math.abs(
-      (touches[0].clientX - touches[1].clientX) *
-        (touches[0].clientY - touches[1].clientY)
-    )
+    ((touches[0].clientX - touches[1].clientX) ** 2) +
+    ((touches[0].clientY - touches[1].clientY) ** 2)
   );
 }
 
@@ -88,7 +86,7 @@ export default createComponent({
     imageStyle() {
       const { scale } = this;
       const style = {
-        transition: this.zooming || this.moving ? '' : '.3s all'
+        transitionDuration: this.zooming || this.moving ? '0s' : '.3s'
       };
 
       if (scale !== 1) {

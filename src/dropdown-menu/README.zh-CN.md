@@ -133,6 +133,7 @@ export default {
 | options | 选项数组 | *Option[]* | `[]` | - |
 | disabled | 是否禁用菜单 | *boolean* | `false` | - |
 | title-class | 标题额外类名 | *string* | - | - |
+| get-container | 指定弹出菜单挂载的节点，可以传入选择器，<br>或一个返回节点的函数 | *string \| () => Element* | - | 2.2.4 |
 
 ### DropdownItem Events
 
@@ -147,9 +148,9 @@ export default {
 
 通过 ref 可以获取到 DropdownItem 实例并调用实例方法
 
-| 方法名 | 参数 | 返回值 | 介绍 |
+| 方法名 | 说明 | 参数 | 返回值 |
 |------|------|------|------|
-| toggle | show: boolean | - | 切换菜单是否展示 |
+| toggle | 切换菜单是否展示 | show: boolean | - |
 
 ### Option 数据结构
 
@@ -157,4 +158,4 @@ export default {
 |------|------|------|
 | text | 文字 | *string* |
 | value | 标识符 | *string \| number* |
-| icon | 左侧图标名称或图片链接，可选值见 Icon 组件 | *string* |
+| icon | 左侧图标名称或图片链接，可选值见 [Icon 组件](/#/zh-CN/icon) | *string* |

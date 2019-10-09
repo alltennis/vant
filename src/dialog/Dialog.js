@@ -21,6 +21,10 @@ export default createComponent({
     confirmButtonText: String,
     confirmButtonColor: String,
     showCancelButton: Boolean,
+    transition: {
+      type: String,
+      default: 'van-dialog-bounce'
+    },
     showConfirmButton: {
       type: Boolean,
       default: true
@@ -73,6 +77,14 @@ export default createComponent({
       if (this.callback) {
         this.callback(action);
       }
+    },
+
+    onOpened() {
+      this.$emit('opened');
+    },
+
+    onClosed() {
+      this.$emit('closed');
     }
   },
 
@@ -131,7 +143,11 @@ export default createComponent({
     );
 
     return (
-      <transition name="van-dialog-bounce">
+      <transition
+        name={this.transition}
+        onAfterEnter={this.onOpened}
+        onAfterLeave={this.onClosed}
+      >
         <div
           vShow={this.value}
           role="dialog"

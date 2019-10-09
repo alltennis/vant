@@ -19,7 +19,7 @@ test('click grid item', () => {
     }
   });
 
-  const Item = wrapper.find('.van-grid-item');
+  const Item = wrapper.find('.van-grid-item__content');
   Item.trigger('click');
 
   expect(onClick).toHaveBeenCalledTimes(1);
@@ -32,6 +32,18 @@ test('sqaure and set gutter', () => {
         <van-grid-item />
         <van-grid-item />
         <van-grid-item />
+      </van-grid>
+    `
+  });
+
+  expect(wrapper).toMatchSnapshot();
+});
+
+test('icon-size prop', () => {
+  const wrapper = mount({
+    template: `
+      <van-grid icon-size="10">
+        <van-grid-item icon="success" />
       </van-grid>
     `
   });

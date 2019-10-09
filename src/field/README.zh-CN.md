@@ -17,7 +17,7 @@ Vue.use(Field);
 
 ### 基础用法
 
-通过 v-model 绑定输入框的值
+通过`v-model`绑定输入框的值
 
 ```html
 <van-cell-group>
@@ -143,13 +143,13 @@ Vue.use(Field);
 | arrow-direction | 箭头方向，可选值为 `left` `up` `down` | *string* | - | 2.0.4 |
 | error-message | 底部错误提示文案，为空时不展示 | *string* | `''` | - 
 | label-class | 左侧文本额外类名 | *any* | - | - |
-| label-width | 左侧文本宽度，可指定单位，默认为 px | *string \| number* | `90px` | - |
+| label-width | 左侧文本宽度，默认单位为`px` | *string \| number* | `90px` | - |
 | label-align | 左侧文本对齐方式，可选值为 `center` `right` | *string* | `left` | - |
 | input-align | 输入框内容对齐方式，可选值为 `center` `right` | *string* | `left` | - |
 | error-message-align | 错误提示文案对齐方式，可选值为 `center` `right` | *string* | `left` | - |
-| autosize | 自适应内容高度，只对 textarea 有效，可传入对象,<br>如 { maxHeight: 100, minHeight: 50 }，单位为 px | *boolean \| object* | `false` | - |
-| left-icon | 左侧图标名称或图片链接，可选值见 Icon 组件 | *string* | - | - |
-| right-icon | 右侧图标名称或图片链接，可选值见 Icon 组件 | *string* | - | - |
+| autosize | 自适应内容高度，只对 textarea 有效，可传入对象,<br>如 { maxHeight: 100, minHeight: 50 }，单位为`px` | *boolean \| object* | `false` | - |
+| left-icon | 左侧图标名称或图片链接，可选值见 [Icon 组件](/#/zh-CN/icon) | *string* | - | - |
+| right-icon | 右侧图标名称或图片链接，可选值见 [Icon 组件](/#/zh-CN/icon) | *string* | - | - |
 
 ### Events
 
@@ -169,10 +169,10 @@ Vue.use(Field);
 
 通过 ref 可以获取到 field 实例并调用实例方法
 
-| 方法名 | 参数 | 返回值 | 介绍 |
+| 方法名 | 说明 | 参数 | 返回值 |
 |------|------|------|------|
-| focus | - | - | 获取输入框焦点 |
-| blur | - | - | 取消输入框焦点 |
+| focus | 获取输入框焦点 | - | - |
+| blur | 取消输入框焦点 | - | - |
 
 ### Slots
 

@@ -1,5 +1,122 @@
 # Changelog
 
+### [v2.2.6](https://github.com/youzan/vant/tree/v2.2.6)
+`2019-10-08`
+
+**Features**
+
+- Grid: add icon-size prop [\#4656](https://github.com/youzan/vant/pull/4656)
+- Toast: add transition option [\#4638](https://github.com/youzan/vant/pull/4638)
+- Dialog: add transition prop [\#4636](https://github.com/youzan/vant/pull/4636)
+- Dialog: add open、close event [\#4633](https://github.com/youzan/vant/pull/4633)
+- Dialog: add opened、closed event [\#4634](https://github.com/youzan/vant/pull/4634)
+- NumberKeyboard: add extra-key slot [\#4644](https://github.com/youzan/vant/pull/4644)
+- CheckboxGroup: add toggleAll method [\#4640](https://github.com/youzan/vant/pull/4640)
+
+**Bug Fixes**
+
+- fix AddressList input event triggered twice [\#4659](https://github.com/youzan/vant/pull/4659)
+- fix Tabs incorrect padding when type is card [\#4658](https://github.com/youzan/vant/pull/4658)
+- fix GoodsAction incorrect border radius [\#4653](https://github.com/youzan/vant/pull/4653)
+- fix NumberKeyboard compatible with Vue 2.6 event bubble bug [\#4632](https://github.com/youzan/vant/pull/4632)
+
+
+### [v2.2.5](https://github.com/youzan/vant/tree/v2.2.5)
+`2019-09-28`
+
+**Features**
+
+- Picker: add columns-top slot [\#4607](https://github.com/youzan/vant/pull/4607)
+- Picker: add columns-bottom slot [\#4607](https://github.com/youzan/vant/pull/4607)
+- Overlay: add default slot [\#4571](https://github.com/youzan/vant/pull/4571)
+- Overlay: add custom-style prop [\#4572](https://github.com/youzan/vant/pull/4572)
+- Checkbox: add bind-group prop [\#4600](https://github.com/youzan/vant/pull/4600)
+- DropdownItem: add get-container prop [\#4611](https://github.com/youzan/vant/pull/4611)
+- Area: add columns-placeholder prop [\#4580](https://github.com/youzan/vant/pull/4580)
+- AddressEdit: add area-columns-placeholder props [\#4584](https://github.com/youzan/vant/pull/4584)
+
+**Bug Fixes**
+
+- fix Overlay type definition missing [\#4601](https://github.com/youzan/vant/pull/4601)
+- fix Swipe incorrect swipeTo animation [\#4570](https://github.com/youzan/vant/pull/4570)
+- fix Uploader incorrect preview index when upload same images [\#4577](https://github.com/youzan/vant/pull/4577)
+
+
+### [v2.2.4](https://github.com/youzan/vant/tree/v2.2.4) [Deprecated]
+`2019-09-28` 🇨🇳
+
+**Tips**
+
+- There is a style loss issue in this version, please use version 2.2.5
+
+
+### [v2.2.3](https://github.com/youzan/vant/tree/v2.2.3)
+`2019-09-24`
+
+**Features**
+
+- Cell: improve accessibility [\#4519](https://github.com/youzan/vant/pull/4519)
+- Popup: improve accessibility [\#4516](https://github.com/youzan/vant/pull/4516)
+- Search: improve accessibility [\#4522](https://github.com/youzan/vant/pull/4522)
+- Picker: improve accessibility [\#4521](https://github.com/youzan/vant/pull/4521)
+- GridItem: improve accessbility [\#4517](https://github.com/youzan/vant/pull/4517)
+- ActionSheet: improve accessibility [\#4525](https://github.com/youzan/vant/pull/4525)
+- Sku: add sku item previewImgUrl [\#4562](https://github.com/youzan/vant/pull/4562)
+- ActionSheet: enable round by default [\#4542](https://github.com/youzan/vant/pull/4542)
+- RadioGroup: add icon-size prop [\#4529](https://github.com/youzan/vant/pull/4529)
+- RadioGroup: add checked-color prop [\#4532](https://github.com/youzan/vant/pull/4532)
+- CheckboxGroup: add icon-size prop [\#4530](https://github.com/youzan/vant/pull/4530)
+- CheckboxGroup: add checked-color prop [\#4531](https://github.com/youzan/vant/pull/4531)
+- ActionSheet: enable safe-area-inset-bottom by default [\#4524](https://github.com/youzan/vant/pull/4524)
+- NumberKeyboard: enable safe-area-inset-bottom by default [\#4544](https://github.com/youzan/vant/pull/4544)
+
+
+### [v2.2.2](https://github.com/youzan/vant/tree/v2.2.2)
+`2019-09-19`
+
+**Features**
+
+- Dialog: improve word wrap [\#4506](https://github.com/youzan/vant/pull/4506)
+- Search: add action-text prop [\#4501](https://github.com/youzan/vant/pull/4501)
+- Popup: add close-icon-position prop [\#4507](https://github.com/youzan/vant/pull/4507)
+- Uploader: add index param in events [\#4460](https://github.com/youzan/vant/pull/4460)
+- GoodsActionButton: increase height [\#4461](https://github.com/youzan/vant/pull/4461)
+- AddressList: add @address-list-item-radio-icon-color var [\#4481](https://github.com/youzan/vant/pull/4481)
+
+**Bug Fixes**
+
+- fix Field disabled color in safari [\#4508](https://github.com/youzan/vant/pull/4508)
+- fix ImagePreview incorrect scale [\#4477](https://github.com/youzan/vant/pull/4477)
+- fix DatetimePicker infinite loop when use formatted text is unnumeric [\#4485](https://github.com/youzan/vant/pull/4485)
+
+
+### [v2.2.1](https://github.com/youzan/vant/tree/v2.2.1)
+`2019-09-12`
+
+**Features**
+
+- Icon: add dot prop [\#4425](https://github.com/youzan/vant/pull/4425)
+- Icon: add down、wap-home icon [\#4404](https://github.com/youzan/vant/pull/4404)
+- Circle: update text style [\#4401](https://github.com/youzan/vant/pull/4401)
+- GridItem: add dot prop [\#4426](https://github.com/youzan/vant/pull/4426)
+- GridItem: add info prop [\#4424](https://github.com/youzan/vant/pull/4424)
+- Progress: add stroke-width prop [\#4397](https://github.com/youzan/vant/pull/4397)
+- Popup: add safe-area-inset-bottom prop [\#4419](https://github.com/youzan/vant/pull/4419)
+- Tab: add to、url、replace prop [\#4422](https://github.com/youzan/vant/pull/4422)
+- TreeSelect: add dot option [\#4433](https://github.com/youzan/vant/pull/4433)
+- Stepper: add decimal-length prop [\#4443](https://github.com/youzan/vant/pull/4443)
+- Sku: add stock-threshold prop [\#4444](https://github.com/youzan/vant/pull/4444)
+- Sku: add safe-area-inset-bottom prop [\#4428](https://github.com/youzan/vant/pull/4428)
+- Sku: update sku style [\#4437](https://github.com/youzan/vant/pull/4437)
+- SidebarItem: add dot prop [\#4432](https://github.com/youzan/vant/pull/4432)
+
+**Bug Fixes**
+
+- fix Sku incorrect button position [\#4427](https://github.com/youzan/vant/pull/4427)
+- fix Uploader should't emit click-preview when delete [\#4407](https://github.com/youzan/vant/pull/4407)
+- fix Progress incorrect pivot position [\#4396](https://github.com/youzan/vant/pull/4396)
+
+
 ### [v2.2.0](https://github.com/youzan/vant/tree/v2.2.0)
 `2019-09-06`
 

@@ -64,6 +64,7 @@ export default {
 | Attribute | Description | Type | Default | Version |
 |------|------|------|------|------|
 | area-list | Area List | *object* | - | - |
+| area-columns-placeholder | placeholder of area columns | *string[]* | `[]` | - |
 | address-info | Address Info | *AddressInfo* | `{}` | - |
 | search-result | Address search result | *SearchResult[]* | `[]` | - |
 | show-postal | Whether to show postal field | *boolean* | `false` | - |
@@ -103,9 +104,9 @@ export default {
 
 Use ref to get address-edit instance and call instance methods
 
-| Name | Attribute | Return value | Description |
+| Name | Description | Attribute | Return value |
 |------|------|------|------|
-| setAddressDetail | addressDetail: string | - | Set address detail |
+| setAddressDetail | Set address detail | addressDetail: string | - |
 
 ### AddressInfo Data Structure
 

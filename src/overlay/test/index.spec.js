@@ -23,6 +23,19 @@ test('class-name prop', () => {
   expect(wrapper).toMatchSnapshot();
 });
 
+test('custom style prop', () => {
+  const wrapper = mount(Overlay, {
+    propsData: {
+      show: true,
+      customStyle: {
+        backgroundColor: 'red'
+      }
+    }
+  });
+
+  expect(wrapper).toMatchSnapshot();
+});
+
 test('duration prop', () => {
   const wrapper = mount(Overlay, {
     propsData: {
@@ -46,4 +59,14 @@ test('click event', () => {
 
   wrapper.trigger('click');
   expect(onClick).toHaveBeenCalledTimes(1);
+});
+
+test('default slot', () => {
+  const wrapper = mount(Overlay, {
+    scopedSlots: {
+      default: () => 'Custom Default'
+    }
+  });
+
+  expect(wrapper).toMatchSnapshot();
 });
