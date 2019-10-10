@@ -42,7 +42,7 @@ export default createComponent({
       });
     },
     onOversize: function onOversize() {
-      this.$Toast(t('oversize', this.maxSize));
+      this.$toast(t('oversize', this.maxSize));
     },
     renderUploader: function renderUploader(content, disabled) {
       if (disabled === void 0) {

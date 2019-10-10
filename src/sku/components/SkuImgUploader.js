@@ -41,7 +41,7 @@ export default createComponent({
     },
 
     onOversize() {
-      this.$Toast(t('oversize', this.maxSize));
+      this.$toast(t('oversize', this.maxSize));
     },
 
     renderUploader(content, disabled = false) {
