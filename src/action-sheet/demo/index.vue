@@ -83,11 +83,11 @@ export default {
   methods: {
     onSelect(item) {
       this.show1 = false;
-      this.$Toast(item.name);
+      this.$toast(item.name);
     },
 
     onCancel() {
-      this.$Toast('cancel');
+      this.$toast('cancel');
     }
   }
 };

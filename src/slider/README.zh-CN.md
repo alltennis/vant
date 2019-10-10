@@ -27,7 +27,7 @@ export default {
 
   methods: {
     onChange(value) {
-      this.$Toast('当前值：' + value);
+      this.$toast('当前值：' + value);
     }
   }
 };

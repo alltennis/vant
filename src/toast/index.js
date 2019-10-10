@@ -155,6 +155,6 @@ Toast.install = () => {
   Vue.use(VueToast);
 };
 
-Vue.prototype.$Toast = Toast;
+Vue.prototype.$toast = Toast;
 
 export default Toast;

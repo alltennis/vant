@@ -58,11 +58,11 @@ export default {
 
   methods: {
     onSearch() {
-      this.$Toast(this.value);
+      this.$toast(this.value);
     },
 
     onCancel() {
-      this.$Toast(this.$t('cancel'));
+      this.$toast(this.$t('cancel'));
     }
   }
 };

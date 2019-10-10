@@ -101,7 +101,7 @@ export default {
       this.$refs.countDown.reset();
     },
     finish() {
-      this.$Toast('Finished');
+      this.$toast('Finished');
     }
   }
 }

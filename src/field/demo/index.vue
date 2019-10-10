@@ -18,7 +18,7 @@
           required
           clearable
           right-icon="question-o"
-          @click-right-icon="$Toast('question')"
+          @click-right-icon="$toast('question')"
         />
 
         <van-field

@@ -54,11 +54,11 @@ export default {
 
   methods: {
     onSave() {
-      this.$Toast(this.$t('save'));
+      this.$toast(this.$t('save'));
     },
 
     onDelete() {
-      this.$Toast(this.$t('delete'));
+      this.$toast(this.$t('delete'));
     },
 
     onChangeDetail(val) {

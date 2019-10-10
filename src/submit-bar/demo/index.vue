@@ -80,10 +80,10 @@ export default {
 
   methods: {
     onClickButton() {
-      this.$Toast(this.$t('clickButton'));
+      this.$toast(this.$t('clickButton'));
     },
     onClickLink() {
-      this.$Toast(this.$t('clickLink'));
+      this.$toast(this.$t('clickLink'));
     }
   }
 };

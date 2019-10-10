@@ -105,7 +105,7 @@ export default {
 
   methods: {
     onChange(value) {
-      this.$Toast(this.$t('text') + value);
+      this.$toast(this.$t('text') + value);
     }
   }
 };

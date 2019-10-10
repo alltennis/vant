@@ -3,13 +3,13 @@
     <demo-block :title="$t('title1')">
       <van-button
         type="primary"
-        @click="$Toast($t('text'))"
+        @click="$toast($t('text'))"
       >
         {{ $t('title1') }}
       </van-button>
       <van-button
         type="primary"
-        @click="$Toast($t('longText'))"
+        @click="$toast($t('longText'))"
       >
         {{ $t('longTextButton') }}
       </van-button>
@@ -106,33 +106,33 @@ export default {
 
   methods: {
     showLoadingToast() {
-      this.$Toast.loading({ mask: true, message: this.$t('loading') });
+      this.$toast.loading({ mask: true, message: this.$t('loading') });
     },
 
     showSuccessToast() {
-      this.$Toast.success(this.$t('text2'));
+      this.$toast.success(this.$t('text2'));
     },
 
     showFailToast() {
-      this.$Toast.fail(this.$t('text3'));
+      this.$toast.fail(this.$t('text3'));
     },
 
     showIconToast() {
-      this.$Toast({
+      this.$toast({
         message: this.$t('customIcon'),
         icon: 'like-o'
       });
     },
 
     showImageToast() {
-      this.$Toast({
+      this.$toast({
         message: this.$t('customImage'),
         icon: 'https://img.yzcdn.cn/vant/logo.png'
       });
     },
 
     showCustomizedToast() {
-      const toast = this.$Toast.loading({
+      const toast = this.$toast.loading({
         duration: 0,
         forbidClick: true,
         loadingType: 'spinner',
@@ -146,7 +146,7 @@ export default {
           toast.message = this.$t('text4', second);
         } else {
           clearInterval(timer);
-          this.$Toast.clear();
+          this.$toast.clear();
         }
       }, 1000);
     }
