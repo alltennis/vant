@@ -13,6 +13,7 @@ export type TreeSelectItem = {
   dot?: boolean;
   info?: string | number;
   disabled?: boolean;
+  className?: any;
   children: TreeSelectChildren[];
 };
 
@@ -56,17 +57,15 @@ function TreeSelect(
       : activeId === id;
   }
 
-  const Navs = items
-    .filter(item => item.text)
-    .map(item => (
-      <SidebarItem
-        dot={item.dot}
-        info={item.info}
-        title={item.text}
-        disabled={item.disabled}
-        class={bem('nav-item')}
-      />
-    ));
+  const Navs = items.map(item => (
+    <SidebarItem
+      dot={item.dot}
+      info={item.info}
+      title={item.text}
+      disabled={item.disabled}
+      class={[bem('nav-item'), item.className]}
+    />
+  ));
 
   function Content() {
     if (slots.content) {
