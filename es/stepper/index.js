@@ -13,6 +13,12 @@ var LONG_PRESS_INTERVAL = 200;
 
 function equal(value1, value2) {
   return String(value1) === String(value2);
+} // add num and avoid float number
+
+
+function add(num1, num2) {
+  var cardinal = Math.pow(10, 10);
+  return Math.round((num1 + num2) * cardinal) / cardinal;
 }
 
 export default createComponent({
@@ -158,13 +164,7 @@ export default createComponent({
       }
 
       var diff = type === 'minus' ? -this.step : +this.step;
-      var value = +this.currentValue + diff; // avoid float number
-
-      if (!isDef(this.decimalLength)) {
-        value = Math.round(value * 100) / 100;
-      }
-
-      value = this.format(value);
+      var value = this.format(add(+this.currentValue, diff));
       this.emitChange(value);
       this.$emit(type);
     },

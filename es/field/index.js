@@ -305,8 +305,7 @@ export default createComponent({
         "arrowDirection": this.arrowDirection
       },
       "class": bem((_bem = {
-        error: this.error,
-        disabled: this.$attrs.disabled
+        error: this.error
       }, _bem["label-" + labelAlign] = labelAlign, _bem['min-height'] = this.type === 'textarea' && !this.autosize, _bem)),
       "scopedSlots": scopedSlots,
       "on": {
